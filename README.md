@@ -18,10 +18,16 @@ At the beginning of this project, we were considering whether metal prices are l
 6. Calculate the mean square error. 
 
 ## Description of python file -- PCA model
-Description content
+Since we got the result from linear regression model which is biased, so we had to use another linear model to substitute the method of linear regression. Then we picked PCA model. PCA means principal component analysis, which is a linear dimensionality reduction using Singular Value Decomposition of the data to project it to a lower dimensional space. First we applied logarithm on the raw data, because based on our data type, a log-transforming distribution might be a clearly better description of the data than a normal distribution. Then we trained the data. We set 10-years as a time period to train the data. And then we applied PCA to the data to get covariance values and PCA loadings. We set n_component as 3 so we got three sets of covariance values. If a covariance computed in PCA is large, then the corresponding principal component is important in describing the underlying data dependencies. Based on the three sets of covariance, we used the first set because the values are large. PCA loadings are the coefficients of the linear combination of the original variables from which the principal components are constructed. We used PCA loadings to get a virtual basket of the market of metals, which is used to compare with trained data of eachtype of metal to get their difference. And based on these up and down differences, we could predict what time to buy in or sell out. In order to show the accuracy of PCA model, we also applied binary prediction. Based on the results, we could see that PCA got higher accuracy than just using trained data and getting mean of the trained data. Therefore, we could say PCA is reliable.
 
-1. bullet point
-2. bullt point
+1. Collect raw data from Kaggle
+2. Apply logarithm on the data because we're using PCA model
+3. Set 10-years as a time period to train the data, which is used to predict the next 10 years
+4. Set n components as 3 to get three sets of PCA covariance
+5. Get PCA loadings to build the virtual basket of the market of metals
+6. Compare the trained data of metal with the virtual basket we got to get the up and down differences
+7. Based on the differences, we could predict what time to sell out or buy in
+8. To show PCA has higher accuracy, we also applied binary prediction to compare with other methods, like just using original data or getting mean of the data
 
 ## Description of python file -- Time Series Model
 Description content
